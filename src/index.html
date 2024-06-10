@@ -9,19 +9,20 @@
 </head>
 <body>
     <div class="flex h-screen text-center">
-        <div class="m-auto">
-            <h1 class="text-3xl font-bold m-5">
+        <div class="mx-auto">
+            <h1 class="text-3xl font-bold">
                 DOGS
             </h1>
-            <div class="border m-5">
-                <img id="main-image" src="" alt="Loading...">
+            <button class="btn btn-primary w-64 rounded-full m-5" onclick="SetMainDogImage();">Gimme a dog!</button>
+            <div class="m-5">
+                <img class="max-h-[50vh]" id="main-image" src="" alt="Loading...">
             </div>
-            <button class="btn w-64 rounded-full m-5">Gimme a dog!</button>
         </div>
     </div>
 
     <script>
-        var imgUrl = fetch("https://dog.ceo/api/breeds/image/random")
+        function SetMainDogImage(){
+            var imgUrl = fetch("https://dog.ceo/api/breeds/image/random")
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -41,6 +42,9 @@
             .catch(error => {
                 console.error('Error:', error);
             });
+        }
+        
+        SetMainDogImage();
 
         
     </script>
