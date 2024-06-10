@@ -13,8 +13,8 @@
             <h1 class="text-3xl font-bold m-5">
                 DOGS
             </h1>
-            <div class="artboard phone-1 border m-5">320×568
-                <img src="" alt="Loading...">
+            <div class="border m-5">
+                <img id="main-image" src="" alt="Loading...">
             </div>
             <button class="btn w-64 rounded-full m-5">Gimme a dog!</button>
         </div>
@@ -29,7 +29,14 @@
                 return response.json();
             })
             .then(data => {
-                console.log(data);
+                if (data['status'] === 'success') {
+                    console.log(data);
+                    const elem = document.getElementById('main-image');
+                    elem.setAttribute('src', data['message']);
+                }
+                else {
+                    console.error('Fetch unsuccessful:', data)
+                }
             })
             .catch(error => {
                 console.error('Error:', error);
