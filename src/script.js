@@ -1,10 +1,8 @@
-//import { createClient } from "@supabase/supabase-js";
-
-// // Create a single supabase client for interacting with your database
-// const supabase = createClient(
-//   "https://onsaseklbpsmdexhtndh.supabase.co",
-//   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9uc2FzZWtsYnBzbWRleGh0bmRoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTk0OTQ1NjcsImV4cCI6MjAzNTA3MDU2N30.NeoUGm-geYZRLeaCyvjoMtSh4kcAvEa97ol83RRrLbg"
-// );
+// Create a single supabase client for interacting with your database
+const sb = supabase.createClient(
+  "https://onsaseklbpsmdexhtndh.supabase.co",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9uc2FzZWtsYnBzbWRleGh0bmRoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTk0OTQ1NjcsImV4cCI6MjAzNTA3MDU2N30.NeoUGm-geYZRLeaCyvjoMtSh4kcAvEa97ol83RRrLbg"
+);
 
 let imageSrc = "";
 
@@ -18,8 +16,8 @@ function SetMainDogImage() {
     })
     .then((data) => {
       if (data["status"] === "success") {
-        imageSrc = data["message"];
         const elem = document.getElementById("main-image");
+        imageSrc = data["message"];
         elem.setAttribute("src", imageSrc);
       } else {
         console.error("Fetch unsuccessful:", data);
